@@ -1,4 +1,4 @@
-name: "Clover coverage check"
+name: "Clover test coverage check"
 description: "Verify that your test coverage meets the requirements."
 author: "Johan van Helden <johan@johanvanhelden.com>"
 branding:
