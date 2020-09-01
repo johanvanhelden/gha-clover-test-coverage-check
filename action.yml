@@ -1,0 +1,21 @@
+name: "Clover coverage check"
+description: "Verify that your test coverage meets the requirements."
+author: "Johan van Helden <johan@johanvanhelden.com>"
+branding:
+  icon: "check"
+  color: "green"
+inputs:
+  filename:
+    description: "The filename of the clover coverage XML file."
+    required: true
+    default: "coverage.xml"
+  percentage:
+    description: "The minimum percentage of coverage allowed."
+    required: true
+    default: "95"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.filename }}
+    - ${{ inputs.percentage }}
