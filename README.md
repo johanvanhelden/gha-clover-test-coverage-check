@@ -7,7 +7,7 @@ Simply add the following step to your workflow:
 
 ```yml
 - name: Check test coverage
-  uses: johanvanhelden/clover-coverage-check@v1
+  uses: johanvanhelden/gha-clover-test-coverage-check@v1
   with:
     percentage: "95"
     filename: "coverage.xml"
