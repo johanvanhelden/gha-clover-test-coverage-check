@@ -15,7 +15,7 @@ inputs:
     default: "95"
 runs:
   using: "docker"
-  image: "johanvanhelden/gha-clover-test-coverage-check:v1"
+  image: "docker://johanvanhelden/gha-clover-test-coverage-check:v1"
   args:
     - ${{ inputs.filename }}
     - ${{ inputs.percentage }}
