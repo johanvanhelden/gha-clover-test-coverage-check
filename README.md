@@ -26,7 +26,7 @@ The filename of the clover coverage XML file.
 Output is exported as [GitHub Action output](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#steps-context).
 
 You can use it in other steps, for example:
-```
+```yml
 - name: Do something if the test coverage is above 50
   if: steps.test-coverage.outputs.elements > 50
   run: echo "${{ steps.test-coverage.outputs.elements }}"
