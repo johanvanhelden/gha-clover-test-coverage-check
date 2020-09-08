@@ -13,6 +13,9 @@ inputs:
     description: "The minimum percentage of coverage allowed."
     required: true
     default: "95"
+outputs:
+  coverage:
+    description: 'The processed value from XML file.'
 runs:
   using: "docker"
   image: "docker://johanvanhelden/gha-clover-test-coverage-check:v1"
