@@ -7,6 +7,7 @@ Simply add the following step to your workflow:
 
 ```yml
 - name: Check test coverage
+  id: test-coverage
   uses: johanvanhelden/gha-clover-test-coverage-check@v1
   with:
     percentage: "95"
@@ -22,9 +23,17 @@ The minimum percentage of coverage allowed.
 The filename of the clover coverage XML file.
 
 ## Output
+Output is exported as [GitHub Action output](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#steps-context).
+
+You can use it in other steps, for example:
+```
+- name: Do something if the test coverage is above 50
+  if: steps.test-coverage.outputs.elements > 50
+  run: echo "${{ steps.coverage.outputs.elements }}"
+```
 
 ### coverage
-The calculated value is exported as a [GitHub Action output](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#steps-context) as `coverage`. For example: `${{ steps.coverage.outputs.coverage }}`.
+The calculated value.
 
 ### Generating a coverage report
 This is how you can generate a test coverage report using PHPUnit:
