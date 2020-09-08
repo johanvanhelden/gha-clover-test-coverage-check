@@ -19,6 +19,9 @@ The minimum percentage of coverage allowed.
 ### Filename 
 The filename of the clover coverage XML file.
 
+### Output
+The calculated value is exported as a [GitHub Action output](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#steps-context) as `coverage`. For example: `${{ steps.coverage.outputs.coverage }}`.
+
 ### Generating a coverage report
 This is how you can generate a test coverage report using PHPUnit:
 
