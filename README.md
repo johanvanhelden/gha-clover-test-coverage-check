@@ -29,7 +29,7 @@ You can use it in other steps, for example:
 ```
 - name: Do something if the test coverage is above 50
   if: steps.test-coverage.outputs.elements > 50
-  run: echo "${{ steps.coverage.outputs.elements }}"
+  run: echo "${{ steps.test-coverage.outputs.elements }}"
 ```
 
 ### coverage
