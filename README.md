@@ -22,6 +22,12 @@ The minimum percentage of coverage allowed.
 ### filename 
 The filename of the clover coverage XML file.
 
+### precision 
+The precision of the rounded value.
+
+### exit 
+If the coverage check should exit.
+
 ## Output
 Output is exported as [GitHub Action output](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#steps-context).
 

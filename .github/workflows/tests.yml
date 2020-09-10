@@ -1,0 +1,80 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  code-style:
+    name: Code Style
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set Up PHP and Tools
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: "7.4"
+          tools: composer:v2, phpcs, php-cs-fixer, phpmd, phpcpd
+          coverage: none
+
+      - name: Syntax Errors
+        run: find src tests -name "*.php" -print0 | xargs -0 -n1 -P8 php -l
+
+      - name: PHP_CodeSniffer
+        run: phpcs
+
+      - name: PHP-CS-Fixer
+        run: php-cs-fixer fix src tests --dry-run --diff --allow-risky=yes --config=.php_cs
+
+      - name: PHPMD
+        run: phpmd src text phpmd.xml
+
+      - name: PHPCPD
+        run: phpcpd src
+
+  security-check:
+    name: Security Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set Up PHP and Tools
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: "7.4"
+          tools: composer:v2
+          coverage: none
+
+      - name: Check Composer Packages
+        uses: symfonycorp/security-checker-action@v2
+
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set Up PHP and Tools
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: "7.4"
+          tools: composer:v2
+
+      - name: Install Composer Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+      - name: Run PHPUnit Tests
+        run: ./vendor/bin/phpunit tests
+
+      - name: Standalone Execution
+        run: php ./src/test-coverage-checker.php tests/Fixtures/coverage_100.xml 50 2 false
+
+      - name: Action Execution
+        uses: ./
+        with:
+          percentage: "50"
+          filename: "tests/Fixtures/coverage_100.xml"

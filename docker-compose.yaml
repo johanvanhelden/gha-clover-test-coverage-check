@@ -1,0 +1,8 @@
+version: "2"
+
+services:
+  clover-coverage-check:
+    container_name: clover-coverage-check
+    build: .
+    tty: true
+    dns: 8.8.8.8
