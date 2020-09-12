@@ -56,7 +56,7 @@ class Argument
             return null;
         }
 
-        if ($arguments[$position] == '') {
+        if ($arguments[$position] === '') {
             return null;
         }
 
