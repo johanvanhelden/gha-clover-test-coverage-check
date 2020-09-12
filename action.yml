@@ -13,18 +13,14 @@ inputs:
     description: "The minimum percentage of coverage allowed."
     required: true
     default: "95"
-  precision:
-    description: "The precision of the coverage value."
+  rounded-precision:
+    description: "The precision of the rounded coverage value."
     required: false
-    default: ""
-  precision-display:
-    description: "The precision of the coverage display value."
-    required: false
-    default: ""
+    default: "2"
   exit:
-    description: "If the coverage check should exit."
+    description: "Wether the coverage check should exit."
     required: false
-    default: ""
+    default: "true"
 outputs:
   coverage:
     description: "The processed value from the XML file."
@@ -35,6 +31,5 @@ runs:
   args:
     - ${{ inputs.filename }}
     - ${{ inputs.percentage }}
-    - ${{ inputs.precision }}
-    - ${{ inputs.precision-display }}
+    - ${{ inputs.rounded-precision }}
     - ${{ inputs.exit }}

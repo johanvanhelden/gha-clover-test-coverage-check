@@ -22,14 +22,11 @@ The minimum percentage of coverage allowed.
 ### filename 
 The filename of the clover coverage XML file.
 
-### precision (optional)
-The precision of the coverage value. Where `0` will round to the highest rounded number (e.g: `99.999999` > `100`).
-
-### precision-display (optional)
-The precision of the coverage display value. Where `0` will round to the highest rounded number (e.g: `99.999999` > `100`).
+### rounded-precision (optional)
+The precision of the rounded coverage value. Where `0` will round to the highest rounded number (e.g: `99.999999` > `100`).
 
 ### exit (optional)
-If the coverage check should exit if the required percentage is not met.
+Wether the coverage check should exit if the required percentage is not met.
 
 ## Output
 Output is exported as [GitHub Action output](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#steps-context).
@@ -48,10 +45,16 @@ Or make a step conditional:
 ```
 
 ### coverage
-The calculated value.
+The calculated coverage value.
 
 ### coverage-display
-The calculated value for display purposes.
+The calculated coverage value for display purposes.
+
+### rounded-coverage-display
+The rounded coverage value.
+
+### rounded-coverage-display
+The rounded calculated coverage value for display purposes.
 
 ### coverage-acceptable
 The true or false value of the check result.

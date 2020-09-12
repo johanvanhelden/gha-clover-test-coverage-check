@@ -6,36 +6,48 @@ namespace CoverageCheck;
 
 require __DIR__ . '/includes/autoloader.php';
 
+use CoverageCheck\Helpers\Argument;
 use CoverageCheck\Helpers\Coverage;
 use CoverageCheck\Helpers\Output;
 use InvalidArgumentException;
 use SimpleXMLElement;
 
-$inputFile = $argv[1];
-$percentage = min(100, max(0, (int) $argv[2]));
-$precision = isset($argv[3]) ? (int) $argv[3] : null;
-$precisionDisplay = isset($argv[4]) ? (int) $argv[4] : null;
-$shouldExit = isset($argv[5]) == 'true';
-
-var_dump($precision, $precisionDisplay, $shouldExit);
+$inputFile = Argument::getString($argv, 1);
+$percentage = Argument::getPercentage($argv, 2);
+$roundedPrecision = Argument::getInt($argv, 3);
+$shouldExit = Argument::getBool($argv, 4);
 
 if (!file_exists($inputFile)) {
-    throw new InvalidArgumentException('Invalid input file provided: ' . $inputFile);
+    throw new InvalidArgumentException('The coverage file could not be found: ' . $inputFile);
 }
 
 if (!$percentage) {
-    throw new InvalidArgumentException('An integer checked percentage must be given as second parameter');
+    throw new InvalidArgumentException('An integer percentage must be given as second parameter.');
 }
 
 $xml = new SimpleXMLElement(file_get_contents($inputFile));
-$coverage = Coverage::fromXml($xml, $precision);
+
+$coverage = Coverage::fromXml($xml);
 $coverageDisplay = $coverage . '%';
+
+$coverageRounded = $coverage;
+$coverageRoundedDisplay = $coverage . '%';
+
+if (!is_null($roundedPrecision)) {
+    $coverageRounded = round($coverageRounded, $roundedPrecision);
+    $coverageRoundedDisplay = $coverageRounded . '%';
+}
+
 $isAcceptable = Coverage::isAcceptable($coverage, $percentage);
 
 echo Output::message($coverageDisplay, $percentage, $isAcceptable);
 
 echo Output::gitHub('coverage', (string) $coverage);
 echo Output::gitHub('coverage-display', (string) $coverageDisplay);
+
+echo Output::gitHub('coverage-rounded', (string) $coverageRounded);
+echo Output::gitHub('coverage-rounded-display', (string) $coverageRoundedDisplay . '%');
+
 echo Output::gitHub('coverage-acceptable', $isAcceptable ? 'true' : 'false');
 
 if ($shouldExit && !$isAcceptable) {

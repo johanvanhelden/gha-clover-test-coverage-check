@@ -8,7 +8,7 @@ use SimpleXMLElement;
 
 class Coverage
 {
-    public static function fromXml(SimpleXMLElement $xml, int $precision): float
+    public static function fromXml(SimpleXMLElement $xml): float
     {
         $metrics = $xml->xpath('//metrics');
         $totalElements = 0;
@@ -21,7 +21,7 @@ class Coverage
 
         $coverage = ($checkedElements / $totalElements) * 100;
 
-        return round($coverage, $precision);
+        return $coverage;
     }
 
     public static function isAcceptable(float $coverage, int $percentage): bool

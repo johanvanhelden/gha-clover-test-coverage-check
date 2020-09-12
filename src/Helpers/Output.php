@@ -15,7 +15,7 @@ class Output
             return '[ERROR] ' . $message . ', which is not accepted (>=' . $percentage . '%)' . PHP_EOL;
         }
 
-        return '[OK] ' . $message . ', which is accepted (>=' . $percentage . '%)!' . PHP_EOL;
+        return '[OK] ' . $message . ', which is accepted (>=' . $percentage . '%)' . PHP_EOL;
     }
 
     public static function gitHub(string $name, string $value): string
