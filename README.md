@@ -71,3 +71,17 @@ This is how you can generate a test coverage report using PHPUnit:
 ## Action Development
 You can test the action locally by running: `docker-compose up --build`
 Any arguments can be configured in the `docker-compose.yml` file.
+
+## Building and publishing
+
+Building happens automaticly once a new version is tagged.
+
+To push a manual build, ensure you are logged in locally to hub.docker.com using `docker login` and have access to the hub repository.
+(note: your username is used, not your email address).
+
+```
+$ docker build ./ --tag johanvanhelden/gha-clover-test-coverage-check:TAG
+$ docker push johanvanhelden/gha-clover-test-coverage-check:TAG
+```
+
+Replace `TAG` with the tag you are working on.
