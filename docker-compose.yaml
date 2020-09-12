@@ -1,8 +1,9 @@
-version: "2"
+version: "3"
 
 services:
   clover-coverage-check:
     container_name: clover-coverage-check
     build: .
-    tty: true
-    dns: 8.8.8.8
+    volumes:
+      - ./tests:/tests
+    command: ["/tests/Fixtures/coverage_100.xml", "50", "2", "true"]
