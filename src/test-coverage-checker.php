@@ -26,11 +26,15 @@ if (!$percentage) {
 
 $xml = new SimpleXMLElement(file_get_contents($inputFile));
 $coverage = Coverage::fromXml($xml, $precision);
+$coverageDisplay = $coverage . '%';
+$isAcceptable = Coverage::isAcceptable($coverage, $percentage);
 
-echo Output::message($coverage, $percentage);
+echo Output::message($coverageDisplay, $percentage, $isAcceptable);
 
-echo Output::gitHubCoverage($coverage);
+echo Output::gitHub('coverage', (string) $coverage);
+echo Output::gitHub('coverage-display', (string) $coverageDisplay);
+echo Output::gitHub('coverage-acceptable', $isAcceptable ? 'true' : 'false');
 
-if ($shouldExit && !Coverage::isAcceptable($coverage, $percentage)) {
+if ($shouldExit && !$isAcceptable) {
     exit(1);
 }

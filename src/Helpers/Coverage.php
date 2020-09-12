@@ -19,7 +19,9 @@ class Coverage
             $checkedElements += (int) $metric['coveredelements'];
         }
 
-        return round(($checkedElements / $totalElements) * 100, $precision);
+        $coverage = ($checkedElements / $totalElements) * 100;
+
+        return round($coverage, $precision);
     }
 
     public static function isAcceptable(float $coverage, int $percentage): bool

@@ -8,10 +8,11 @@ Simply add the following step to your workflow:
 ```yml
 - name: Check test coverage
   id: test-coverage
-  uses: johanvanhelden/gha-clover-test-coverage-check@v1
+  uses: johanvanhelden/gha-clover-test-coverage-check@v2
   with:
     percentage: "95"
     filename: "coverage.xml"
+    precision: "2"
 ```
 
 ## Input
@@ -23,10 +24,10 @@ The minimum percentage of coverage allowed.
 The filename of the clover coverage XML file.
 
 ### precision 
-The precision of the rounded value.
+The precision of the rounded value. Where `0` will round to the highest rounded number (e.g: `99.999999` > `100`).
 
-### exit 
-If the coverage check should exit.
+### exit (optional)
+If the coverage check should exit if the required percentage is not met.
 
 ## Output
 Output is exported as [GitHub Action output](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#steps-context).
@@ -47,6 +48,13 @@ Or make a step conditional:
 ### coverage
 The calculated value.
 
+### coverage-display
+The calculated value for display purposes.
+
+### coverage-acceptable
+The true or false value of the check result.
+You can use this output with the `exit` input to implement your own coverage logic.
+
 ### Generating a coverage report
 This is how you can generate a test coverage report using PHPUnit:
 
@@ -54,3 +62,7 @@ This is how you can generate a test coverage report using PHPUnit:
 - name: Generate code coverage
   run: ./vendor/bin/phpunit --coverage-clover ./coverage.xml
 ```
+
+## Action Development
+You can test the action locally by running: `docker-compose up --build`
+Any arguments can be configured in the `docker-compose.yml` file.
