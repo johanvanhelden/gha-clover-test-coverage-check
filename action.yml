@@ -23,7 +23,15 @@ inputs:
     default: "true"
 outputs:
   coverage:
-    description: "The processed value from the XML file."
+    description: "The calculated coverage value."
+  coverage-display:
+    description: "The calculated coverage value for display purposes."
+  coverage-rounded:
+    description: "The rounded coverage value."
+  coverage-rounded-display:
+    description: "The rounded calculated coverage value for display purposes."
+  coverage-acceptable:
+    description: "The true or false value of the check result."
 runs:
   using: "docker"
   #image: "docker://johanvanhelden/gha-clover-test-coverage-check:v1"

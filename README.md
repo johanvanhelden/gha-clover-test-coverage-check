@@ -50,10 +50,10 @@ The calculated coverage value.
 ### coverage-display
 The calculated coverage value for display purposes.
 
-### rounded-coverage-display
+### coverage-rounded
 The rounded coverage value.
 
-### rounded-coverage-display
+### coverage-rounded-display
 The rounded calculated coverage value for display purposes.
 
 ### coverage-acceptable
