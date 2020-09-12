@@ -6,7 +6,6 @@ namespace CoverageCheck\Helpers;
 
 class Output
 {
-    /** @SuppressWarnings(PHPMD.ExitExpression) */
     public static function message(string $coverageDisplay, int $percentage, bool $isAcceptable): string
     {
         $message = 'Code coverage is ' . $coverageDisplay;
