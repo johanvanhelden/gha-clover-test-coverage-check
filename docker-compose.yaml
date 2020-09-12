@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  clover-coverage-check:
+    container_name: clover-coverage-check
+    build: .
+    volumes:
+      - ./tests:/tests
+    #
+    # test a failed coverage check:
+    #command: ["/tests/Fixtures/coverage_1.xml", "3", "2", "false"]
+    #
+    # test a succesfull coverage check:
+    command: ["/tests/Fixtures/coverage_100.xml", "50", "2", "true"]

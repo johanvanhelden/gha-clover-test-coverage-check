@@ -1,0 +1,17 @@
+{
+    "name": "johanvanhelden/gha-clover-test-coverage-check",
+    "description": "A clover test coverage checker for Github Actions.",
+    "require-dev": {
+        "phpunit/phpunit": "^9"
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },    
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    }
+}
