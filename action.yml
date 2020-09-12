@@ -14,13 +14,17 @@ inputs:
     required: true
     default: "95"
   precision:
-    description: "The precision of the rounded value."
+    description: "The precision of the coverage value."
     required: false
-    default: "2"
+    default: ""
+  precision-display:
+    description: "The precision of the coverage display value."
+    required: false
+    default: ""
   exit:
     description: "If the coverage check should exit."
     required: false
-    default: "true"
+    default: ""
 outputs:
   coverage:
     description: "The processed value from the XML file."
@@ -32,4 +36,5 @@ runs:
     - ${{ inputs.filename }}
     - ${{ inputs.percentage }}
     - ${{ inputs.precision }}
+    - ${{ inputs.precision-display }}
     - ${{ inputs.exit }}

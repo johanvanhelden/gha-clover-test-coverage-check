@@ -73,8 +73,17 @@ jobs:
       - name: Standalone Execution
         run: php ./src/test-coverage-checker.php tests/Fixtures/coverage_100.xml 50 2 false
 
-      - name: Action Execution
+      - name: Action Execution (Succeeding)
         uses: ./
         with:
           percentage: "50"
           filename: "tests/Fixtures/coverage_100.xml"
+
+      - name: Action Execution (Failing, non-exit)
+        uses: ./
+        with:
+          percentage: "50"
+          filename: "tests/Fixtures/coverage_1.xml"
+          precision: "4"
+          precision-display: "2"
+          exit: "false"

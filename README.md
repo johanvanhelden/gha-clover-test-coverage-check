@@ -12,7 +12,6 @@ Simply add the following step to your workflow:
   with:
     percentage: "95"
     filename: "coverage.xml"
-    precision: "2"
 ```
 
 ## Input
@@ -23,8 +22,11 @@ The minimum percentage of coverage allowed.
 ### filename 
 The filename of the clover coverage XML file.
 
-### precision 
-The precision of the rounded value. Where `0` will round to the highest rounded number (e.g: `99.999999` > `100`).
+### precision (optional)
+The precision of the coverage value. Where `0` will round to the highest rounded number (e.g: `99.999999` > `100`).
+
+### precision-display (optional)
+The precision of the coverage display value. Where `0` will round to the highest rounded number (e.g: `99.999999` > `100`).
 
 ### exit (optional)
 If the coverage check should exit if the required percentage is not met.

@@ -13,8 +13,11 @@ use SimpleXMLElement;
 
 $inputFile = $argv[1];
 $percentage = min(100, max(0, (int) $argv[2]));
-$precision = (int) $argv[3];
-$shouldExit = $argv[4] == 'true';
+$precision = isset($argv[3]) ? (int) $argv[3] : null;
+$precisionDisplay = isset($argv[4]) ? (int) $argv[4] : null;
+$shouldExit = isset($argv[5]) == 'true';
+
+var_dump($precision, $precisionDisplay, $shouldExit);
 
 if (!file_exists($inputFile)) {
     throw new InvalidArgumentException('Invalid input file provided: ' . $inputFile);
