@@ -16,11 +16,11 @@ class CoverageTest extends TestCase
         $input = [
             'coverage_100.xml' => [
                 'elements' => 100,
-                'methods' => 100,
+                'methods'  => 100,
             ],
             'coverage_1.xml'   => [
                 'elements' => 1.4598540145985401,
-                'methods' => 7.142857142857142,
+                'methods'  => 7.142857142857142,
             ],
         ];
 
