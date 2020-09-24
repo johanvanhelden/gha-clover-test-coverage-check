@@ -16,7 +16,7 @@ $inputFile = Argument::getString($argv, 1);
 $percentage = Argument::getPercentage($argv, 2);
 $roundedPrecision = Argument::getInt($argv, 3);
 $shouldExit = Argument::getBool($argv, 4);
-$metricToParse = Argument::getString($argv, 5);
+$metricToParse = $argc >= 6 ? Argument::getString($argv, 5) : 'elements';
 
 if (!file_exists($inputFile)) {
     throw new InvalidArgumentException('The coverage file could not be found: ' . $inputFile);
