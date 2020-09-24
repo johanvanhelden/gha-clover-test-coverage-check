@@ -21,6 +21,10 @@ inputs:
     description: "Wether the coverage check should exit."
     required: false
     default: "true"
+  metric:
+    description: "The metric to get and process."
+    required: true
+    default: "elements"
 outputs:
   coverage:
     description: "The calculated coverage value."
@@ -41,3 +45,4 @@ runs:
     - ${{ inputs.percentage }}
     - ${{ inputs.rounded-precision }}
     - ${{ inputs.exit }}
+    - ${{ inputs.metric }}

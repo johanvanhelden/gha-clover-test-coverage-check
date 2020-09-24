@@ -28,6 +28,9 @@ The precision of the rounded coverage value. Where `0` will round to the highest
 ### exit (optional)
 Wether the coverage check should exit if the required percentage is not met.
 
+### metric
+The metric to get and process. By default: `elements`.
+
 ## Output
 Output is exported as [GitHub Action output](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#steps-context).
 
