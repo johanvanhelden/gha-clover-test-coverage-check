@@ -29,6 +29,7 @@ class CoverageTest extends TestCase
 
             foreach ($metrics as $metricToParse => $expectedValue) {
                 $this->assertEquals($expectedValue, Coverage::fromXml($xml, $metricToParse));
+	    }
         }
     }
 
