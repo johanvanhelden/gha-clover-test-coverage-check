@@ -20,7 +20,7 @@ class CoverageTest extends TestCase
             ],
             'coverage_1.xml'   => [
                 'elements' => 1.4598540145985401,
-                'methods' => 25,
+                'methods' => 7.142857142857142,
             ],
         ];
 
