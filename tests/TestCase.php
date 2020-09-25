@@ -8,7 +8,12 @@ use PHPUnit\Framework\TestCase as PHPUnitTestCase;
 
 abstract class TestCase extends PHPUnitTestCase
 {
-    protected function runCoverageCheck(string $file, string $percentage = '50', string $roundedPrecision = '2', string $metric = 'elements'): string
+    protected function runCoverageCheck(
+	string $file,
+	string $percentage = '50',
+	string $roundedPrecision = '2',
+	string $metric = 'elements'
+    ): string
     {
         $argv = [];
         $argv[1] = __DIR__ . '/Fixtures/' . $file;
