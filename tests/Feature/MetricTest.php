@@ -17,6 +17,6 @@ class MetricTest extends TestCase
 
         $output = $this->runCoverageCheck('/coverage_1.xml', '50', '2', 'methods');
 
-        $this->assertStringContainsString('coverage is ii7.1428571428571%', $output);
+        $this->assertStringContainsString('coverage is 7.1428571428571%', $output);
     }
 }
