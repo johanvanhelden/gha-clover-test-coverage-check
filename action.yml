@@ -23,7 +23,7 @@ inputs:
     default: "true"
   metric:
     description: "The metric to get and process."
-    required: true
+    required: false
     default: "elements"
 outputs:
   coverage:
