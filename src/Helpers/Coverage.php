@@ -8,7 +8,7 @@ use SimpleXMLElement;
 
 class Coverage
 {
-    public static function fromXml(SimpleXMLElement $xml, string $metricToParse = 'elements'): float
+    public static function fromXml(SimpleXMLElement $xml, string $metricToParse): float
     {
         $metrics = $xml->xpath('//metrics');
         $totalElements = 0;
