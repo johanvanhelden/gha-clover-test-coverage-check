@@ -14,14 +14,22 @@ class CoverageTest extends TestCase
     public function it_can_calculate_coverage(): void
     {
         $input = [
-            'coverage_100.xml' => 100,
-            'coverage_1.xml'   => 1.4598540145985401,
+            'coverage_100.xml' => [
+                'elements' => 100,
+                'methods'  => 100,
+            ],
+            'coverage_1.xml' => [
+                'elements' => 1.4598540145985401,
+                'methods'  => 7.142857142857142,
+            ],
         ];
 
-        foreach ($input as $file => $expectedValue) {
+        foreach ($input as $file => $metrics) {
             $xml = new SimpleXMLElement(file_get_contents(__DIR__ . '/../../Fixtures/' . $file));
 
-            $this->assertEquals($expectedValue, Coverage::fromXml($xml));
+            foreach ($metrics as $metricToParse => $expectedValue) {
+                $this->assertEquals($expectedValue, Coverage::fromXml($xml, $metricToParse));
+            }
         }
     }
 

@@ -71,7 +71,7 @@ jobs:
         run: ./vendor/bin/phpunit tests
 
       - name: Standalone Execution
-        run: php ./src/test-coverage-checker.php tests/Fixtures/coverage_100.xml 50 2 false
+        run: php ./src/test-coverage-checker.php tests/Fixtures/coverage_100.xml 50 2 false elements
 
       - name: Action Execution (Succeeding)
         id: output-check-succeeding
