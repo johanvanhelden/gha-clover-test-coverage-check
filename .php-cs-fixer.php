@@ -1,44 +1,46 @@
 <?php
 
-return PhpCsFixer\Config::create()
-    ->setRules([
-        '@PSR2'                                     => true,
-        'array_syntax'                              => ['syntax' => 'short'],
-        'method_separation'                         => true,
-        'no_multiline_whitespace_before_semicolons' => true,
-        'single_quote'                              => true,
-        'binary_operator_spaces'                    => [
+declare(strict_types=1);
+
+$config = new PhpCsFixer\Config();
+
+$config->setRules([
+        'psr_autoloading' => true,
+        '@PSR2'           => true,
+
+        'array_syntax'           => ['syntax' => 'short'],
+        'binary_operator_spaces' => [
             'default'   => 'single_space',
             'operators' => [
                 '=>' => 'align_single_space_minimal',
             ],
         ],
-        'blank_line_after_opening_tag'       => true,
-        'blank_line_before_return'           => true,
-        'cast_spaces'                        => true,
-        'concat_space'                       => ['spacing' => 'one'],
-        'declare_equal_normalize'            => true,
-        'declare_strict_types'               => true,
-        'function_typehint_space'            => true,
-        'single_line_comment_style'          => true,
-        'include'                            => true,
-        'lowercase_cast'                     => true,
-        'native_function_casing'             => true,
-        'increment_style'                    => ['style' => 'post'],
-        'new_with_braces'                    => true,
-        'no_blank_lines_after_class_opening' => true,
-        'no_blank_lines_after_phpdoc'        => true,
-        'no_empty_phpdoc'                    => true,
-        'no_empty_statement'                 => true,
-        'no_extra_consecutive_blank_lines'   => [
+        'blank_line_after_opening_tag'           => true,
+        'blank_line_before_statement'            => ['statements' => ['return']],
+        'cast_spaces'                            => true,
+        'class_attributes_separation'            => ['elements' => ['const' => 'one', 'method' => 'one', 'property' => 'one']],
+        'concat_space'                           => ['spacing' => 'one'],
+        'declare_equal_normalize'                => true,
+        'declare_strict_types'                   => true,
+        'function_typehint_space'                => true,
+        'include'                                => true,
+        'increment_style'                        => ['style' => 'post'],
+        'lowercase_cast'                         => true,
+        'multiline_whitespace_before_semicolons' => true,
+        'native_function_casing'                 => true,
+        'new_with_braces'                        => true,
+        'no_blank_lines_after_class_opening'     => true,
+        'no_blank_lines_after_phpdoc'            => true,
+        'no_empty_phpdoc'                        => true,
+        'no_empty_statement'                     => true,
+        'no_extra_blank_lines'                   => ['tokens' => [
             'curly_brace_block',
             'extra',
             'parenthesis_brace_block',
             'square_brace_block',
             'throw',
             'use',
-        ],
-        'ordered_imports'                             => true,
+        ]],
         'no_leading_import_slash'                     => true,
         'no_leading_namespace_whitespace'             => true,
         'no_mixed_echo_print'                         => ['use' => 'echo'],
@@ -55,6 +57,7 @@ return PhpCsFixer\Config::create()
         'no_whitespace_in_blank_line'                 => true,
         'normalize_index_brace'                       => true,
         'object_operator_without_whitespace'          => true,
+        'ordered_imports'                             => true,
         'phpdoc_align'                                => true,
         'phpdoc_annotation_without_dot'               => true,
         'phpdoc_indent'                               => true,
@@ -77,12 +80,16 @@ return PhpCsFixer\Config::create()
         'short_scalar_cast'                           => true,
         'single_blank_line_before_namespace'          => true,
         'single_class_element_per_statement'          => true,
+        'single_line_comment_style'                   => true,
+        'single_quote'                                => true,
         'simplified_null_return'                      => true,
         'space_after_semicolon'                       => true,
         'standardize_not_equals'                      => true,
-        'trailing_comma_in_multiline_array'           => true,
+        'trailing_comma_in_multiline'                 => ['elements' => ['arrays']],
         'trim_array_spaces'                           => true,
         'void_return'                                 => true,
         'whitespace_after_comma_in_array'             => true,
     ])
     ->setLineEnding("\n");
+
+return $config;
