@@ -14,6 +14,41 @@ Simply add the following step to your workflow:
     filename: "coverage.xml"
 ```
 
+### Creating a badge using the output
+Using a [badge action](https://github.com/emibcn/badge-action), you can create a badge based on the code coverage:
+```yml
+- name: Check test coverage
+  uses: johanvanhelden/gha-clover-test-coverage-check@v1
+  id: coverage
+  with:
+    percentage: "50"
+    filename: "coverage.xml"
+
+- name: Generate the badge SVG image
+  uses: emibcn/badge-action@v1
+  id: badge
+  with:
+    label: 'Coverage'
+    status: ${{ steps.coverage.outputs.coverage }}
+    path: ./badges/test-coverage.svg
+    color: ${{ steps.coverage.outputs.coveragelines > 75 && 'green' || 'red' }}
+```
+
+If you want more colors and gradients, you can set it up the `color` property like this:
+
+```yml
+color: ${{
+      steps.coverage.outputs.coverage > 90 && 'green'              ||
+      steps.coverage.outputs.coverage > 80 && 'yellow,green'       ||
+      steps.coverage.outputs.coverage > 70 && 'yellow'             ||
+      steps.coverage.outputs.coverage > 60 && 'orange,yellow'      ||
+      steps.coverage.outputs.coverage > 50 && 'orange'             ||
+      steps.coverage.outputs.coverage > 40 && 'red,orange'         ||
+      steps.coverage.outputs.coverage > 30 && 'red,red,orange'     ||
+      steps.coverage.outputs.coverage > 20 && 'red,red,red,orange' ||
+      'red' }}
+```
+
 ## Input
 
 ### percentage
