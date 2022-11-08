@@ -18,7 +18,7 @@ inputs:
     required: false
     default: "2"
   exit:
-    description: "Wether the coverage check should exit."
+    description: "Weather the coverage check should exit."
     required: false
     default: "true"
   metric:

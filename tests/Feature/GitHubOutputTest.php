@@ -13,7 +13,7 @@ class GitHubOutputTest extends TestCase
     {
         $output = $this->runCoverageCheck('/coverage_100.xml');
 
-        $this->assertStringContainsString('##[set-output name=coverage;]100', $output);
+        $this->assertStringContainsString('"coverage=100" >> $GITHUB_OUTPUT', $output);
     }
 
     /** @test */
@@ -21,7 +21,7 @@ class GitHubOutputTest extends TestCase
     {
         $output = $this->runCoverageCheck('/coverage_100.xml', '50', '0');
 
-        $this->assertStringContainsString('##[set-output name=coverage-display;]100%', $output);
+        $this->assertStringContainsString('"coverage-display=100%" >> $GITHUB_OUTPUT', $output);
     }
 
     /** @test */
@@ -29,7 +29,7 @@ class GitHubOutputTest extends TestCase
     {
         $output = $this->runCoverageCheck('/coverage_1.xml', '50', '2');
 
-        $this->assertStringContainsString('##[set-output name=coverage-rounded;]1.46', $output);
+        $this->assertStringContainsString('"coverage-rounded=1.46" >> $GITHUB_OUTPUT', $output);
     }
 
     /** @test */
@@ -37,7 +37,7 @@ class GitHubOutputTest extends TestCase
     {
         $output = $this->runCoverageCheck('/coverage_1.xml', '50', '2');
 
-        $this->assertStringContainsString('##[set-output name=coverage-rounded-display;]1.46%', $output);
+        $this->assertStringContainsString('"coverage-rounded-display=1.46%" >> $GITHUB_OUTPUT', $output);
     }
 
     /** @test */
@@ -45,7 +45,7 @@ class GitHubOutputTest extends TestCase
     {
         $output = $this->runCoverageCheck('/coverage_100.xml', '50', '0');
 
-        $this->assertStringContainsString('##[set-output name=coverage-acceptable;]true', $output);
+        $this->assertStringContainsString('"coverage-acceptable=true" >> $GITHUB_OUTPUT', $output);
     }
 
     /** @test */
@@ -53,6 +53,6 @@ class GitHubOutputTest extends TestCase
     {
         $output = $this->runCoverageCheck('/coverage_1.xml', '50', '0');
 
-        $this->assertStringContainsString('##[set-output name=coverage-acceptable;]false', $output);
+        $this->assertStringContainsString('"coverage-acceptable=false" >> $GITHUB_OUTPUT', $output);
     }
 }
