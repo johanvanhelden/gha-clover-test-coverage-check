@@ -61,7 +61,7 @@ The filename of the clover coverage XML file.
 The precision of the rounded coverage value. Where `0` will round to the highest rounded number (e.g: `99.999999` > `100`).  By default: `2`.
 
 ### exit (optional)
-Wether the coverage check should exit if the required percentage is not met.  By default: `true`.
+Whether the coverage check should exit if the required percentage is not met.  By default: `true`.
 
 ### metric (optional)
 The metric to get and process. By default: `elements`.
