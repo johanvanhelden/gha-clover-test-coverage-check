@@ -112,7 +112,7 @@ Any arguments can be configured in the `docker-compose.yml` file.
 
 ## Building and publishing
 
-Building happens automaticly once a new version is tagged.
+Building happens automatically once a new version is tagged.
 
 To push a manual build, ensure you are logged in locally to hub.docker.com using `docker login` and have access to the hub repository.
 (note: your username is used, not your email address).
