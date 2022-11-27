@@ -13,7 +13,7 @@ class OutputTest extends TestCase
     public function it_can_output_for_github(): void
     {
         $this->assertEquals(
-            '##"awesome-coverage=check" >> $GITHUB_OUTPUT' . PHP_EOL,
+            '"awesome-coverage=check" >> $GITHUB_OUTPUT' . PHP_EOL,
             Output::gitHub('awesome-coverage', 'check')
         );
     }
