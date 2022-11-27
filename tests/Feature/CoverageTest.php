@@ -35,12 +35,4 @@ class CoverageTest extends TestCase
 
         $this->assertStringContainsString('[ERROR]', $output);
     }
-
-    /** @test */
-    public function it_can_round_the_percentage(): void
-    {
-        $output = $this->runCoverageCheck('coverage_1.xml', '50', '0');
-
-        $this->assertStringContainsString('1%', $output);
-    }
 }

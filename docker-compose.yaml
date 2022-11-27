@@ -6,6 +6,8 @@ services:
     build: .
     volumes:
       - ./tests:/tests
+    environment:
+      - GITHUB_OUTPUT=''
     #
     # test a failed coverage check:
     command: ["/tests/Fixtures/coverage_1.xml", "3", "2", "false", "methods"]
