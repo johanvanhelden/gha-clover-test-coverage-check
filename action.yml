@@ -38,8 +38,8 @@ outputs:
     description: "The true or false value of the check result."
 runs:
   using: "docker"
-  #image: "docker://johanvanhelden/gha-clover-test-coverage-check:v1"
-  image: "Dockerfile"
+  image: "docker://johanvanhelden/gha-clover-test-coverage-check:v1"
+  # image: "Dockerfile"
   args:
     - ${{ inputs.filename }}
     - ${{ inputs.percentage }}
