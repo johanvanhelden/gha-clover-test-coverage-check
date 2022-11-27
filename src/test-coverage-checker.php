@@ -43,13 +43,13 @@ $isAcceptable = Coverage::isAcceptable($coverage, $percentage);
 
 echo Output::message($coverageDisplay, $percentage, $isAcceptable);
 
-echo Output::gitHub('coverage', (string) $coverage);
-echo Output::gitHub('coverage-display', (string) $coverageDisplay);
+Output::gitHub('coverage', (string) $coverage);
+Output::gitHub('coverage-display', (string) $coverageDisplay);
 
-echo Output::gitHub('coverage-rounded', (string) $coverageRounded);
-echo Output::gitHub('coverage-rounded-display', (string) $coverageRoundedDisplay);
+Output::gitHub('coverage-rounded', (string) $coverageRounded);
+Output::gitHub('coverage-rounded-display', (string) $coverageRoundedDisplay);
 
-echo Output::gitHub('coverage-acceptable', $isAcceptable ? 'true' : 'false');
+Output::gitHub('coverage-acceptable', $isAcceptable ? 'true' : 'false');
 
 if ($shouldExit && !$isAcceptable) {
     exit(1);

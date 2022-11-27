@@ -19,6 +19,10 @@ class Output
 
     public static function gitHub(string $name, string $value): string
     {
-        return '##"' . $name . '=' . $value . '" >> $GITHUB_OUTPUT' . PHP_EOL;
+        $command = 'echo "' . $name . '=' . $value . '" >> $GITHUB_OUTPUT';
+
+        shell_exec($command);
+
+        return $command;
     }
 }

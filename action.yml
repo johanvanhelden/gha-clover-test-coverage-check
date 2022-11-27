@@ -39,7 +39,7 @@ outputs:
 runs:
   using: "docker"
   image: "docker://johanvanhelden/gha-clover-test-coverage-check:v1"
-  #image: "Dockerfile"
+  # image: "Dockerfile"
   args:
     - ${{ inputs.filename }}
     - ${{ inputs.percentage }}
