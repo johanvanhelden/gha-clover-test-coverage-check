@@ -14,12 +14,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set Up PHP and Tools
         uses: shivammathur/setup-php@master
         with:
-          php-version: "8.1"
+          php-version: "8.3"
           tools: composer:v2, phpcs, php-cs-fixer, phpmd, phpcpd
           coverage: none
 
@@ -43,12 +43,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set Up PHP and Tools
         uses: shivammathur/setup-php@master
         with:
-          php-version: "8.1"
+          php-version: "8.3"
           tools: composer:v2
           coverage: none
 
@@ -60,12 +60,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set Up PHP and Tools
         uses: shivammathur/setup-php@master
         with:
-          php-version: "8.1"
+          php-version: "8.3"
           tools: composer:v2
 
       - name: Install Composer Dependencies
